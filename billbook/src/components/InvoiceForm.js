@@ -75,8 +75,22 @@ const InvoiceForm = () => {
     );
   };
 
-  const onItemizedItemEdit = (evt) => {
-    const { id, name, value } = evt.target;
+  // const onItemizedItemEdit = (evt) => {
+  //   const { id, name, value } = evt.target;
+  //   const updatedItems = items.map((item) => {
+  //     if (item.id === id) {
+  //       return {
+  //         ...item,
+  //         [name]: value,
+  //       };
+  //     }
+  //     return item;
+  //   });
+  //   setItems(updatedItems);
+  //   handleCalculateTotal();
+  // };
+
+  const onItemizedItemEdit = (id, name, value) => {
     const updatedItems = items.map((item) => {
       if (item.id === id) {
         return {
@@ -89,7 +103,7 @@ const InvoiceForm = () => {
     setItems(updatedItems);
     handleCalculateTotal();
   };
-
+  
   const editField = (event) => {
     const { name, value } = event.target;
     switch (name) {
@@ -97,25 +111,10 @@ const InvoiceForm = () => {
         setCurrency(value);
         break;
       case "invoiceNumber":
-        setCurrency(value);
+        setInvoiceNumber(value);
         break;
-      case "currency":
-        setCurrency(value);
-        break;
-      case "currency":
-        setCurrency(value);
-        break;
-      case "currency":
-        setCurrency(value);
-        break;
-      case "currency":
-        setCurrency(value);
-        break;
-      case "taxRate":
-        setTaxRate(value);
-        break;
-      case "discountRate":
-        setDiscountRate(value);
+      case "dateOfIssue":
+        setDateOfIssue(value);
         break;
       case "billTo":
         setBillTo(value);
@@ -128,6 +127,21 @@ const InvoiceForm = () => {
         break;
       case "billFrom":
         setBillFrom(value);
+        break;
+      case "billFromEmail":
+        setBillFromEmail(value);
+        break;
+      case "billFromAddress":
+        setBillFromAddress(value);
+        break;
+      case "notes":
+        setNotes(value);
+        break;
+      case "taxRate":
+        setTaxRate(value);
+        break;
+      case "discountRate":
+        setDiscountRate(value);
         break;
       default:
         break;
