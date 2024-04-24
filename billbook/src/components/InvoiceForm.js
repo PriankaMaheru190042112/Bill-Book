@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Button, Form, Card } from "react-bootstrap";
 import InvoiceItem from "./InvoiceItem";
 import InputGroup from "react-bootstrap/InputGroup";
-import InvoiceModal from "./InvoiceModal"; // Make sure to import InvoiceModal if it's in a separate file
+import InvoiceModal from "./InvoiceModal"; 
 
 const InvoiceForm = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,20 +75,7 @@ const InvoiceForm = () => {
     );
   };
 
-  // const onItemizedItemEdit = (evt) => {
-  //   const { id, name, value } = evt.target;
-  //   const updatedItems = items.map((item) => {
-  //     if (item.id === id) {
-  //       return {
-  //         ...item,
-  //         [name]: value,
-  //       };
-  //     }
-  //     return item;
-  //   });
-  //   setItems(updatedItems);
-  //   handleCalculateTotal();
-  // };
+
 
   const onItemizedItemEdit = (id, name, value) => {
     const updatedItems = items.map((item) => {
@@ -103,7 +90,7 @@ const InvoiceForm = () => {
     setItems(updatedItems);
     handleCalculateTotal();
   };
-  
+
   const editField = (event) => {
     const { name, value } = event.target;
     switch (name) {
