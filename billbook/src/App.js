@@ -1,8 +1,15 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import InvoiceForm from './components/InvoiceForm';
+import React from 'react';
+
+
 
 function App() {
   return (
     <div className="App">
-      <div className="bg-slate-600">Prianka</div>
+      <div className="container">
+     <InvoiceForm/>
+        </div>
     </div>
   );
 }
