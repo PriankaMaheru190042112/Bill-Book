@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback  } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Button, Form, Card } from "react-bootstrap";
 import InvoiceItem from "./InvoiceItem";
@@ -34,28 +34,7 @@ const InvoiceForm = () => {
     },
   ]);
 
-  useEffect(() => {
-    setCurrentDate(new Date().toLocaleDateString());
-    handleCalculateTotal();
-  }, []);
-
-  const handleRowDel = (item) => {
-    const filteredItems = items.filter((i) => i.id !== item.id);
-    setItems(filteredItems);
-  };
-
-  const handleAddEvent = () => {
-    const newItem = {
-      id: new Date().getTime(),
-      name: "",
-      price: "1.00",
-      description: "",
-      quantity: 1,
-    };
-    setItems([...items, newItem]);
-  };
-
-  const handleCalculateTotal = () => {
+  const handleCalculateTotal = useCallback(() => {
     let subTotal = 0;
     items.forEach((item) => {
       subTotal += parseFloat(
@@ -73,9 +52,28 @@ const InvoiceForm = () => {
         parseFloat(subTotal * (taxRate / 100))
       ).toFixed(2)
     );
+  }, [items, taxRate, discountRate]);
+
+  useEffect(() => {
+    setCurrentDate(new Date().toLocaleDateString());
+    handleCalculateTotal();
+  }, [handleCalculateTotal]);
+
+  const handleRowDel = (item) => {
+    const filteredItems = items.filter((i) => i.id !== item.id);
+    setItems(filteredItems);
   };
 
-
+  const handleAddEvent = () => {
+    const newItem = {
+      id: new Date().getTime(),
+      name: "",
+      price: "1.00",
+      description: "",
+      quantity: 1,
+    };
+    setItems([...items, newItem]);
+  };
 
   const onItemizedItemEdit = (id, name, value) => {
     const updatedItems = items.map((item) => {
