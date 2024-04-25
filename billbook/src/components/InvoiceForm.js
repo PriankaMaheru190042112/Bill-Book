@@ -174,7 +174,7 @@ const InvoiceForm = () => {
                 </div>
               </div>
               <div className="d-flex flex-row align-items-center">
-                <span className="fw-bold me-2">Invoice&nbsp;Number:&nbsp;</span>
+                <span className="fw-bold me-2">Invoice&nbsp;ID:&nbsp;</span>
                 <Form.Control
                   type="number"
                   value={invoiceNumber}
@@ -354,14 +354,9 @@ const InvoiceForm = () => {
                 aria-label="Change Currency"
                 name="currency"
               >
+                <option value="BDT">BDT(Bangladeshi Taka)</option>
                 <option value="$">USD (United States Dollar)</option>
-                <option value="£">GBP (British Pound Sterling)</option>
-                <option value="¥">JPY (Japanese Yen)</option>
-                <option value="$">CAD (Canadian Dollar)</option>
-                <option value="$">AUD (Australian Dollar)</option>
-                <option value="$">SGD (Signapore Dollar)</option>
-                <option value="¥">CNY (Chinese Renminbi)</option>
-                <option value="₿">BTC (Bitcoin)</option>
+            
               </Form.Select>
             </Form.Group>
             <Form.Group className="my-3">
